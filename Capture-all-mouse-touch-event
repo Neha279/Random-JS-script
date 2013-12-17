@@ -1,0 +1,12 @@
+$(document).on("mousedown mousemove mouseup mouseover mouseout touchstart touchmove touchend touchcancel touchenter touchleave",
+               function(ev) {
+                   
+                   if (!ev) ev = window.event;
+		var touches = (ev.changedTouches != undefined)? ev.changedTouches: undefined ;
+		
+                   var  node = (touches != undefined )? touches[0].target: ((ev.target) ? ev.target : ev.srcElement);
+		
+                   console.log(node.id +" "+ ev.type); //donot make it alert its hard to process than .. use switch case for type vs id as per use 
+                   $("#result").html(node.id +" "+ ev.type); // this overwrite so see logs in inpspect element 
+                   
+               });
