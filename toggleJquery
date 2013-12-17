@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<style>
+
+#tog {
+    border:2px solid;
+     border-radius:25px;
+    width:70px;
+    height:35px;
+    background-color: yellow;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+	outline: none;
+	
+}
+
+#switch {
+     border:2px solid;
+     border-radius:25px;
+      width:35px;
+      height:33px;
+      background-color: brown;
+	  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+	  float:left;
+	  outline: none;
+}
+</style>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script>
+$(document).ready(function(){
+    
+    $("#switch").on("click", function(e) {
+       var v =  $("#switch").css('float');
+        if(v=='right')
+            $("#switch").css("float", "left");
+        else 
+             $("#switch").css("float", "right");
+    
+    });
+    
+});
+</script>
+	
+</head>
+
+<body style="background-color:Lavender;margin:0;">
+<div id="tog" >
+    <div id="switch" >
+    </div>
+</div>
+</body>
