@@ -1,0 +1,98 @@
+
+ /**
+ id : container id.
+ options {wd , ht , speed}
+ */
+ var Slide = function (id, opt)
+{
+	var Slide = {};
+    var timer = null;
+	var options = {wd: 100, ht :100 , speed:100 };
+	var obj = document.getElementById(id); 
+	if(obj == null)  return null;
+	
+	if(opt.wd != undefined)
+	    options.wd = opt.wd;
+	if(opt.ht != undefined)
+	    options.ht = opt.ht;
+	if(opt.speed != undefined)
+	    options.speed = opt.speed;
+	var i = options.wd;	
+	
+	Slide.In  = function()
+	{
+		timer = setTimeout( function(){ Slide.In(); }, options.speed);
+		i = i-5;
+		if( i<0)
+		{
+		 clearInterval(timer);
+		 timer = null;			
+		}
+       else
+		{
+		   moveby( -i,0);
+		}		
+	}
+	
+	var k = 0;
+	var end  = - parseInt(options.wd)
+	Slide.Out  = function()
+	{
+		timer = setTimeout( function(){ Slide.Out(); }, options.speed);
+		k = k-5;
+		if( k < end)
+		{
+		 clearInterval(timer);
+		 timer = null;			
+		}
+       else
+		{
+		   moveby( k,0);
+		}		
+	}
+	
+	function moveby(x,y)
+	{
+		obj.style.left= x+"px"
+		obj.style.top= y+"px"
+		console.log('x=' + x + ' y=' + y);
+	}
+	
+	return Slide;
+}
+ 
+/*function slideIn(id, wd , ht, speed)
+{
+   var obj = document.getElementById(id);    
+
+  //for (var i=wd; i>=0;) 
+  {
+     console.log('i=' +i);
+	 timer = setTimeout( function(){ moveby(id,-i,0); }, speed);
+	 i = i-5;
+     if( i<0)
+      {
+		clearInterval(timer);
+		timer = null;	
+		break;
+	 }					
+  } 
+
+}
+
+
+
+
+function slideOut(id, wd , ht)
+{
+   var timer = 0;   
+     
+  for (var i=wd; i>=0;) 
+  {
+	  moveby(id,i,0);
+	  //setTimeout(function() {  },500); 
+	  timer++; 
+	  i = i-5;
+  } 
+
+}*/
